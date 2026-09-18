@@ -1,2 +1,1168 @@
-# toronto-city-roleplay
-Made by Azay.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Toronto City Roleplay | TCXRP</title>
+
+    <meta
+        name="description"
+        content="Toronto City Roleplay — ER:LC roleplay community."
+    >
+
+    <style>
+        :root {
+            --bg: #07111f;
+            --bg2: #0b1728;
+            --card: #101f33;
+            --card2: #13263e;
+            --primary: #1769aa;
+            --primary-light: #2389d7;
+            --text: #ffffff;
+            --muted: #aab8c9;
+            --border: rgba(255,255,255,0.08);
+            --success: #35c878;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(7, 17, 31, 0.94);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 16px 22px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--primary-light);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .menu {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 88vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+            padding: 80px 20px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(23,105,170,0.28),
+                    transparent 55%
+                );
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 7px 14px;
+            border-radius: 999px;
+
+            background: rgba(35,137,215,0.12);
+            border: 1px solid rgba(35,137,215,0.3);
+
+            color: #7bc5ff;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 8vw, 82px);
+            line-height: 1.05;
+            font-weight: 900;
+            letter-spacing: -2px;
+        }
+
+        .hero h1 span {
+            color: var(--primary-light);
+        }
+
+        .hero p {
+            max-width: 680px;
+            margin: 25px auto;
+            color: var(--muted);
+            font-size: 18px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 28px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 13px 22px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .button-primary {
+            background: var(--primary-light);
+            color: white;
+        }
+
+        .button-primary:hover {
+            transform: translateY(-2px);
+            background: #2c99e9;
+        }
+
+        .button-secondary {
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.04);
+        }
+
+        .button-secondary:hover {
+            background: rgba(255,255,255,0.08);
+        }
+
+        /* GENERAL */
+
+        section {
+            padding: 90px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--muted);
+        }
+
+        /* SERVER CARD */
+
+        .server-card {
+            max-width: 750px;
+            margin: 0 auto 60px;
+
+            padding: 28px;
+            border-radius: 16px;
+
+            background: linear-gradient(
+                145deg,
+                var(--card),
+                var(--bg2)
+            );
+
+            border: 1px solid var(--border);
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .server-info h3 {
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+
+        .server-info p {
+            color: var(--muted);
+        }
+
+        .online {
+            color: var(--success);
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        /* CARDS */
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 26px;
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(35,137,215,0.35);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background: rgba(35,137,215,0.12);
+            color: #62b8f5;
+
+            font-size: 22px;
+            margin-bottom: 18px;
+        }
+
+        .card h3 {
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* VERIFICATION */
+
+        #verification {
+            background: var(--bg2);
+        }
+
+        .verification-box {
+            max-width: 700px;
+            margin: auto;
+
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+
+            padding: 40px;
+            text-align: center;
+        }
+
+        .check {
+            width: 65px;
+            height: 65px;
+
+            margin: 0 auto 20px;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(53,200,120,0.12);
+            color: var(--success);
+
+            font-size: 30px;
+        }
+
+        .verification-box h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .verification-box p {
+            color: var(--muted);
+            margin-bottom: 25px;
+        }
+
+        .notice {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #8392a4;
+        }
+
+        /* APPLICATIONS */
+
+        .application {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 220px;
+        }
+
+        .application .button {
+            align-self: flex-start;
+            margin-top: 20px;
+        }
+
+        /* RULES */
+
+        .rule-list {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .rule {
+            background: var(--card);
+            border: 1px solid var(--border);
+
+            border-radius: 12px;
+
+            padding: 20px;
+            margin-bottom: 12px;
+        }
+
+        .rule strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .rule p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* GALLERY */
+
+        .gallery-placeholder {
+            min-height: 180px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #10263f,
+                    #091827
+                );
+
+            border: 1px solid var(--border);
+
+            color: var(--muted);
+            text-align: center;
+        }
+
+        /* CTA */
+
+        .cta {
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(23,105,170,0.25),
+                    transparent 60%
+                );
+        }
+
+        .cta h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: var(--muted);
+            margin-bottom: 25px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 35px 20px;
+
+            border-top: 1px solid var(--border);
+
+            text-align: center;
+            color: var(--muted);
+
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            .menu {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+
+                position: absolute;
+
+                left: 0;
+                right: 0;
+                top: 65px;
+
+                padding: 20px;
+
+                flex-direction: column;
+                gap: 18px;
+
+                background: var(--bg2);
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .server-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero {
+                min-height: 78vh;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+
+            .verification-box {
+                padding: 28px 20px;
+            }
+
+            .cta h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+    <div class="nav-container">
+
+        <a href="#home" class="logo">
+            TORONTO <span>CITY ROLEPLAY</span>
+        </a>
+
+        <button class="menu" onclick="toggleMenu()">
+            ☰
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#verification">Verification</a></li>
+            <li><a href="#departments">Departments</a></li>
+            <li><a href="#staff">Staff</a></li>
+            <li><a href="#applications">Applications</a></li>
+            <li><a href="#rules">Rules</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+        </ul>
+
+    </div>
+</nav>
+
+
+<!-- HOME -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            ER:LC ROLEPLAY COMMUNITY
+        </div>
+
+        <h1>
+            TORONTO <span>CITY ROLEPLAY</span>
+        </h1>
+
+        <p>
+            Welcome to Toronto City Roleplay, a community built around
+            immersive emergency response roleplay, professional sessions,
+            departments and an active community.
+        </p>
+
+        <div class="buttons">
+
+            <a href="#verification"
+               class="button button-primary">
+                Verify Your Account
+            </a>
+
+            <!-- CHANGE THIS TO YOUR DISCORD INVITE -->
+            <a href="https://discord.com/"
+               target="_blank"
+               class="button button-secondary">
+                Join Discord
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SERVER -->
+
+<section>
+
+    <div class="container">
+
+        <div class="server-card">
+
+            <div class="server-info">
+
+                <h3>Toronto City Roleplay</h3>
+
+                <p>
+                    ER:LC Server Code: <strong>TCXRP</strong>
+                </p>
+
+                <div class="online">
+                    ● Community Online
+                </div>
+
+            </div>
+
+            <!-- CHANGE THIS TO YOUR ER:LC JOIN LINK -->
+            <a
+                href="https://policeroleplay.community/"
+                target="_blank"
+                class="button button-primary">
+                Join Server
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section>
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Why Toronto City Roleplay?</h2>
+
+            <p>
+                A structured and community-focused ER:LC experience.
+            </p>
+
+        </div>
+
+        <div class="grid">
+
+            <div class="card">
+
+                <div class="card-icon">01</div>
+
+                <h3>Professional Sessions</h3>
+
+                <p>
+                    Organized sessions designed to provide an immersive
+                    and structured roleplay experience.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-icon">02</div>
+
+                <h3>Active Departments</h3>
+
+                <p>
+                    Multiple departments working together to create
+                    realistic emergency response scenarios.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-icon">03</div>
+
+                <h3>Community First</h3>
+
+                <p>
+                    A community where members can participate, develop
+                    their skills and enjoy roleplay together.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- VERIFICATION -->
+
+<section id="verification">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Account Verification</h2>
+
+            <p>
+                Connect your Discord account with Toronto City Roleplay.
+            </p>
+
+        </div>
+
+        <div class="verification-box">
+
+            <div class="check">
+                ✓
+            </div>
+
+            <h3>Verify with Discord</h3>
+
+            <p>
+                Verification helps us identify members of the
+                Toronto City Roleplay community and provides access
+                to community services.
+            </p>
+
+            <!--
+                IMPORTANT:
+                This is currently a placeholder.
+
+                A real Discord OAuth2 verification system requires
+                a backend. NEVER put your Discord client secret or
+                bot token inside this HTML file.
+            -->
+
+            <a
+                href="https://discord.com/"
+                target="_blank"
+                class="button button-primary">
+                Verify with Discord
+            </a>
+
+            <div class="notice">
+                Discord OAuth verification will be connected when
+                the website backend is configured.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- DEPARTMENTS -->
+
+<section id="departments">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Departments</h2>
+
+            <p>
+                Explore the departments of Toronto City Roleplay.
+            </p>
+
+        </div>
+
+        <div class="grid">
+
+            <div class="card">
+
+                <div class="card-icon">TPS</div>
+
+                <h3>Toronto Police Service</h3>
+
+                <p>
+                    Law enforcement operations, patrols,
+                    traffic enforcement and emergency response.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-icon">OPP</div>
+
+                <h3>Ontario Provincial Police</h3>
+
+                <p>
+                    Provincial policing operations and
+                    specialized law enforcement roleplay.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-icon">TFS</div>
+
+                <h3>Toronto Fire Service</h3>
+
+                <p>
+                    Fire suppression, rescue operations,
+                    medical response and emergency services.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- STAFF -->
+
+<section id="staff">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Our Staff Team</h2>
+
+            <p>
+                Meet the teams responsible for managing the community.
+            </p>
+
+        </div>
+
+        <div class="grid">
+
+            <div class="card">
+
+                <div class="card-icon">O</div>
+
+                <h3>Ownership</h3>
+
+                <p>
+                    Responsible for the overall direction and
+                    administration of Toronto City Roleplay.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-icon">H</div>
+
+                <h3>Head of Staff</h3>
+
+                <p>
+                    Oversees staff operations, training and
+                    internal management.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <div class="card-icon">HR</div>
+
+                <h3>High Rank Team</h3>
+
+                <p>
+                    Handles senior staff responsibilities,
+                    management and community operations.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- APPLICATIONS -->
+
+<section id="applications">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Applications</h2>
+
+            <p>
+                Interested in becoming part of the team?
+            </p>
+
+        </div>
+
+        <div class="grid">
+
+            <div class="card application">
+
+                <div>
+
+                    <div class="card-icon">S</div>
+
+                    <h3>Staff Application</h3>
+
+                    <p>
+                        Apply to become a member of the
+                        Toronto City Roleplay staff team.
+                    </p>
+
+                </div>
+
+                <a
+                    href="#"
+                    class="button button-secondary">
+                    Apply
+                </a>
+
+            </div>
+
+
+            <div class="card application">
+
+                <div>
+
+                    <div class="card-icon">D</div>
+
+                    <h3>Department Application</h3>
+
+                    <p>
+                        Apply to join one of our
+                        available departments.
+                    </p>
+
+                </div>
+
+                <a
+                    href="#"
+                    class="button button-secondary">
+                    Apply
+                </a>
+
+            </div>
+
+
+            <div class="card application">
+
+                <div>
+
+                    <div class="card-icon">R</div>
+
+                    <h3>Staff Reinstatement</h3>
+
+                    <p>
+                        Former staff members can use this
+                        application to request reinstatement.
+                    </p>
+
+                </div>
+
+                <a
+                    href="#"
+                    class="button button-secondary">
+                    Apply
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- RULES -->
+
+<section id="rules">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Community Rules</h2>
+
+            <p>
+                Everyone is expected to help maintain a respectful
+                and enjoyable community.
+            </p>
+
+        </div>
+
+        <div class="rule-list">
+
+            <div class="rule">
+
+                <strong>01 — Respect</strong>
+
+                <p>
+                    Treat other community members and staff
+                    with respect.
+                </p>
+
+            </div>
+
+            <div class="rule">
+
+                <strong>02 — Roleplay</strong>
+
+                <p>
+                    Maintain realistic and appropriate
+                    roleplay during sessions.
+                </p>
+
+            </div>
+
+            <div class="rule">
+
+                <strong>03 — Staff Instructions</strong>
+
+                <p>
+                    Follow reasonable instructions from
+                    authorized staff members.
+                </p>
+
+            </div>
+
+            <div class="rule">
+
+                <strong>04 — Discord Rules</strong>
+
+                <p>
+                    Follow Discord's Terms of Service and
+                    Community Guidelines.
+                </p>
+
+            </div>
+
+            <div class="rule">
+
+                <strong>05 — Discipline</strong>
+
+                <p>
+                    Violations may result in moderation
+                    action depending on the situation.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GALLERY -->
+
+<section id="gallery">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>Gallery</h2>
+
+            <p>
+                Highlights from the Toronto City Roleplay community.
+            </p>
+
+        </div>
+
+        <div class="grid">
+
+            <div class="gallery-placeholder">
+                Community Photos
+            </div>
+
+            <div class="gallery-placeholder">
+                Department Photos
+            </div>
+
+            <div class="gallery-placeholder">
+                Session Highlights
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="cta">
+
+    <div class="container">
+
+        <h2>Ready to join?</h2>
+
+        <p>
+            Become part of Toronto City Roleplay today.
+        </p>
+
+        <div class="buttons">
+
+            <a
+                href="#verification"
+                class="button button-primary">
+                Verify Your Account
+            </a>
+
+            <a
+                href="https://discord.com/"
+                target="_blank"
+                class="button button-secondary">
+                Join Discord
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 <strong>Toronto City Roleplay</strong>.
+        All rights reserved.
+    </p>
+
+    <p>
+        Toronto City Roleplay is an independent ER:LC community.
+    </p>
+
+</footer>
+
+
+<script>
+
+function toggleMenu() {
+
+    const menu = document.getElementById("navLinks");
+
+    menu.classList.toggle("open");
+
+}
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        document
+            .getElementById("navLinks")
+            .classList.remove("open");
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
